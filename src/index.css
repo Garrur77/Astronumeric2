@@ -1,0 +1,592 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #7e22ce;
+  --primary-dark: #581c87;
+  --primary-light: #a855f7;
+  --accent: #ecd9fa;
+  --gold: #eab308;
+  --white: #f8f8f8;
+  --black: #121212;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cosmic-bg {
+  background: transparent;
+  position: relative;
+  z-index: 0;
+}
+
+/* Enhanced stars background with better animation */
+.cosmic-bg::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/assets/stars.png");
+  animation: twinkle 10s ease-in-out infinite alternate;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* New stars overlay with parallax effect */
+.stars-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 50px 160px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 90px 40px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: parallaxStars 60s linear infinite;
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes parallaxStars {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200px 200px;
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.9;
+  }
+}
+
+.logo-text {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 15px rgba(234, 179, 8, 0.5);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Enhanced mandala background with better visibility and glow */
+.mandala-bg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-image: url("/src/assets/mandala.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+  animation: rotate 120s linear infinite, pulsate 15s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.3));
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--white);
+  border: 2px solid var(--primary);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(126, 34, 206, 0.4);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--gold);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: var(--gold);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: -1;
+}
+
+.btn-outline:hover {
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
+}
+
+.btn-outline:hover::before {
+  width: 100%;
+}
+
+.form-control {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(236, 217, 250, 0.3);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: var(--white);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.3), 0 0 15px rgba(168, 85, 247, 0.2);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+/* Custom select styling */
+select.form-select {
+  color-scheme: dark; /* Forces dark mode dropdown on browsers that support it */
+}
+
+/* For browsers that don't support color-scheme */
+select.form-select option {
+  background-color: #141e30;
+  color: white;
+}
+
+/* Enhanced form styling */
+.form-input,
+.form-select {
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.2);
+}
+
+/* Custom dropdown arrow styling */
+.form-select {
+  background-image: none; /* Remove default arrow */
+  padding-right: 2.5rem; /* Make room for custom arrow */
+}
+
+/* Glowing effect for focused inputs */
+.form-input:focus,
+.form-select:focus {
+  animation: inputGlow 1.5s infinite alternate;
+}
+
+@keyframes inputGlow {
+  from {
+    box-shadow: 0 0 5px rgba(234, 179, 8, 0.2);
+  }
+  to {
+    box-shadow: 0 0 8px rgba(234, 179, 8, 0.4);
+  }
+}
+
+/* Date picker container styling */
+.date-picker-container {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.date-picker-container:hover {
+  box-shadow: 0 0 15px rgba(126, 34, 206, 0.3);
+}
+
+/* Improve dropdown visibility */
+select option {
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Ensure dropdown text is visible */
+select,
+select option {
+  color: white;
+  background-color: #141e30;
+}
+
+.job-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.job-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(126, 34, 206, 0.1), rgba(234, 179, 8, 0.1));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(234, 179, 8, 0.2);
+  border-color: var(--gold);
+}
+
+.job-card:hover::before {
+  opacity: 1;
+}
+
+.job-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.job-card:hover .job-image {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.glowing-text {
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(234, 179, 8, 0.7);
+  position: relative;
+  display: inline-block;
+}
+
+.glowing-text::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.sacred-symbol {
+  position: absolute;
+  opacity: 0.15;
+  z-index: -1;
+  filter: drop-shadow(0 0 10px rgba(234, 179, 8, 0.5));
+}
+
+.sacred-symbol-1 {
+  top: 5%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+  animation: float 15s ease-in-out infinite;
+}
+
+.sacred-symbol-2 {
+  bottom: 10%;
+  right: 5%;
+  width: 250px;
+  height: 250px;
+  animation: float 12s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.prediction-container {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.prediction-container:hover {
+  border-color: rgba(234, 179, 8, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(234, 179, 8, 0.1);
+}
+
+.prediction-container::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: calc(100% + 100px);
+  height: calc(100% + 100px);
+  background-image: radial-gradient(circle at center, rgba(234, 179, 8, 0.2) 0%, transparent 70%);
+  z-index: -1;
+  animation: pulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* background video */
+#background-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  filter: brightness(0.7) contrast(1.1);
+}
+
+/* Card highlight effect */
+.highlight-card {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.highlight-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--gold), var(--primary), var(--gold));
+  z-index: -1;
+  border-radius: 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-5px);
+  border-color: transparent;
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+  animation: borderRotate 2s linear infinite;
+}
+
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
+  }
+}
+
+/* Animated button with glow effect */
+.glow-button {
+  position: relative;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--gold), var(--primary-light), var(--gold));
+  z-index: -1;
+  border-radius: 52px;
+  animation: borderGlow 2s linear infinite;
+}
+
+.glow-button::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+  border-radius: 48px;
+  z-index: -1;
+}
+
+.glow-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(126, 34, 206, 0.4);
+}
+
+@keyframes borderGlow {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Container with proper z-index */
+.container {
+  position: relative;
+  z-index: 10;
+}
