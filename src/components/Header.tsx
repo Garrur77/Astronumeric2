@@ -62,11 +62,12 @@ const Header = () => {
             <NavLink href="https://www.naukri.com/" external>
               Jobs
             </NavLink>
-            <NavLink to="#" currentPath={location.pathname}>
+            <NavLink to="/contact" currentPath={location.pathname}>
               Support
             </NavLink>
 
             {/* Call to action button */}
+            <NavLink to="/" currentPath={location.pathname}>
             <motion.button
               className="ml-4 px-4 py-2 bg-gradient-to-r from-purple-700 to-purple-900 text-white rounded-full font-medium border border-purple-500/50 hover:border-gold/50 shadow-lg shadow-purple-900/20 hover:shadow-purple-700/40 transition-all duration-300"
               whileHover={{ scale: 1.05 }}
@@ -74,6 +75,7 @@ const Header = () => {
             >
               Get Started
             </motion.button>
+            </NavLink>
           </nav>
 
           {/* Mobile Menu Button */}

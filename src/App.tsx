@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import HomePage from "./pages/HomePage"
 import PredictPage from "./pages/PredictPage"
 import ResultPage from "./pages/ResultPage"
+import ContactPage from "./pages/ContactPage"
 import "./index.css"
 import astroVideo from "./assets/Astro.mp4"
 
@@ -31,6 +32,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/predict" element={<PredictPage />} />
             <Route path="/result" element={<ResultPage />} />
+            <Route path="/contact" element={<ContactPage/>} />
           </Routes>
         </AnimatePresence>
       </div>
